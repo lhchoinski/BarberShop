@@ -38,4 +38,18 @@ public class Employee {
         this.cpf = data.cpf();
         this.email = data.email();
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
 }
