@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +12,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.BarberShop.DTOs.Employee.EmployeeRequestDTO;
 import com.BarberShop.DTOs.Employee.EmployeeResponseDTO;
 import com.BarberShop.Entities.Employee;
@@ -62,10 +61,28 @@ public class EmployeeController {
 
         Employee employeeData = new Employee(data);
         repository.save(employeeData);
-        return;
+        return ;
     }
 
-    
+    // Update Employee
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable UUID id, @RequestBody EmployeeRequestDTO data) {
+        Optional<Employee> optionalEmployee = repository.findById(id);
+
+        if (optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+
+            employee.setName(data.name());
+            employee.setCpf(data.cpf());
+            employee.setEmail(data.email());
+
+            repository.save(employee);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     // Delete Employee
     @CrossOrigin(origins = "*", allowedHeaders = "*")
