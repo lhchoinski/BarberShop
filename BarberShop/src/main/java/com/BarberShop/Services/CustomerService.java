@@ -21,20 +21,29 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    // List Customer
     public List<CustomerResponseDTO> getAllCustomers() {
         List<Customer> customers = customerRepository.findAll();
         return customers.stream().map(CustomerResponseDTO::new).collect(Collectors.toList());
     }
 
+    // List Customer ByID
     public ResponseEntity<CustomerResponseDTO> getCustomerById(UUID id) {
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         return optionalCustomer.map(customer -> ResponseEntity.ok(new CustomerResponseDTO(customer)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // Create and Validate Customer
     public ResponseEntity<?> saveCustomer(CustomerRequestDTO data) {
+
+        if (!isValidEmail(data.email())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("E-mail inválido");
+        }
+
         Customer customer = new Customer(data);
         customerRepository.save(customer);
+
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -57,4 +66,11 @@ public class CustomerService {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Email Validate
+    private boolean isValidEmail(String email) {
+
+        return email.contains("@");
+    }
+
 }

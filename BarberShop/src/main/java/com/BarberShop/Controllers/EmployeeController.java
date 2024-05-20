@@ -26,30 +26,35 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    // GetAll Employees
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<EmployeeResponseDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
+    // Get Employee By ID
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponseDTO> getEmployeeById(@PathVariable UUID id) {
         return employeeService.getEmployeeById(id);
     }
 
+    // Create Employees
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<?> saveEmployee(@RequestBody EmployeeRequestDTO data) {
         return employeeService.saveEmployee(data);
     }
 
+    // Update Employee
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable UUID id, @RequestBody EmployeeRequestDTO data) {
         return employeeService.updateEmployee(id, data);
     }
 
+    // Delete Employee
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable UUID id) {

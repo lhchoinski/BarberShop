@@ -26,30 +26,35 @@ public class SchedulingController {
     @Autowired
     private SchedulingService schedulingService;
 
+    // GetAll Schedulings
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<SchedulingResponseDTO> getAllSchedulings() {
         return schedulingService.getAllSchedulings();
     }
 
+    // Get Scheduling By ID
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{id}")
     public ResponseEntity<SchedulingResponseDTO> getSchedulingById(@PathVariable UUID id) {
         return schedulingService.getSchedulingById(id);
     }
 
+    // Create Schedulings
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<?> saveScheduling(@RequestBody SchedulingRequestDTO data) {
         return schedulingService.saveScheduling(data);
     }
 
+    // Update Scheduling
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateScheduling(@PathVariable UUID id, @RequestBody SchedulingRequestDTO data) {
         return schedulingService.updateScheduling(id, data);
     }
 
+    // Delete Scheduling
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteScheduling(@PathVariable UUID id) {
