@@ -12,7 +12,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,7 +31,7 @@ public class Employee {
 
     private String email;
 
-    public Employee(EmployeeRequestDTO data){
+    public Employee(EmployeeRequestDTO data) {
 
         this.name = data.name();
         this.cpf = data.cpf();
@@ -51,5 +50,4 @@ public class Employee {
         this.email = email;
     }
 
-    
 }

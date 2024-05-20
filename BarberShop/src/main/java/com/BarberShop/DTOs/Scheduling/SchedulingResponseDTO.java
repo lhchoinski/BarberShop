@@ -7,16 +7,14 @@ import com.BarberShop.Entities.Customer;
 import com.BarberShop.Entities.Employee;
 import com.BarberShop.Entities.Scheduling;
 
-public record SchedulingResponseDTO(UUID id,Employee employee,Customer customer,Date date) {
-    
-    public SchedulingResponseDTO(Scheduling scheduling){
+public record SchedulingResponseDTO(UUID id, Employee employee, Customer customer, Date date) {
+
+    public SchedulingResponseDTO(Scheduling scheduling) {
 
         this(
-            scheduling.getId(),
-            scheduling.getEmployee(),
-            scheduling.getCustomer(),
-            scheduling.getDate()
-            );
+                scheduling.getId(),
+                scheduling.getEmployee(),
+                scheduling.getCustomer(),
+                scheduling.getDate());
     }
 }
-

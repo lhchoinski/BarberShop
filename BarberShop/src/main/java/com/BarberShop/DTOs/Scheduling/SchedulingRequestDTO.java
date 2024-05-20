@@ -6,7 +6,7 @@ import com.BarberShop.Entities.Customer;
 import com.BarberShop.Entities.Employee;
 
 public record SchedulingRequestDTO(
-    Employee employee, 
-    Customer customer, 
-    Date date
-) {}
+        Employee employee,
+        Customer customer,
+        Date date) {
+}

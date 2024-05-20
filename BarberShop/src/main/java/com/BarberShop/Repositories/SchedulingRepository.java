@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.BarberShop.Entities.Scheduling;
 
-public interface SchedulingRepository extends JpaRepository<Scheduling, UUID> {}
-    
-
+public interface SchedulingRepository extends JpaRepository<Scheduling, UUID> {
+}

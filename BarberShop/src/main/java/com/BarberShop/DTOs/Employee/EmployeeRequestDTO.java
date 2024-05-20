@@ -1,7 +1,7 @@
 package com.BarberShop.DTOs.Employee;
 
 public record EmployeeRequestDTO(
-    String name, 
-    String cpf, 
-    String email
-) {}
+        String name,
+        String cpf,
+        String email) {
+}

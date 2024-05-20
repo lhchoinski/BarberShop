@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.BarberShop.DTOs.Scheduling.SchedulingRequestDTO;
 import com.BarberShop.DTOs.Scheduling.SchedulingResponseDTO;
-import com.BarberShop.Entities.Customer;
-import com.BarberShop.Entities.Employee;
 import com.BarberShop.Entities.Scheduling;
 import com.BarberShop.Repositories.SchedulingRepository;
 
