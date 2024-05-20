@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,25 +29,27 @@ public class Scheduling {
 
     private UUID id;
 
-    private Employee employeeId;
+    @OneToOne
+    private Employee employee;
 
-    private Customer customerId;
+    @OneToOne
+    private Customer customer;
 
     private Date date;
 
     public Scheduling(SchedulingRequestDTO data) {
 
-        this.employeeId = data.employeeId();
-        this.customerId = data.customerId();
+        this.employee = data.employee();
+        this.customer = data.customer();
         this.date = data.date();
     }
 
-    public void setEmployeeId(Employee employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public void setDate(Date date) {
