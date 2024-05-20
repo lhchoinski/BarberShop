@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.BarberShop.DTOs.Customer.CustomerRequestDTO;
 import com.BarberShop.DTOs.Customer.CustomerResponseDTO;
-import com.BarberShop.DTOs.Employee.EmployeeRequestDTO;
 import com.BarberShop.Entities.Customer;
-import com.BarberShop.Entities.Employee;
 import com.BarberShop.Repositories.CustomerRepository;
 
 @RestController
